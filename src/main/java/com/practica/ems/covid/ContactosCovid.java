@@ -225,7 +225,6 @@ public class ContactosCovid {
 
 	private Persona crearPersona(String[] data) throws EmsInvalidNumberOfDataException {
 		Persona persona = new Persona();
-<<<<<<< HEAD
 				persona.setDocumento(data[1]);
 				persona.setNombre(data[2]);
 				persona.setApellidos(data[3]);
@@ -233,7 +232,6 @@ public class ContactosCovid {
 				persona.setDireccion(data[5]);
 				persona.setCp(data[6]);
 				persona.setFechaNacimiento(parsearFecha(data[7]));
-=======
 		if (data.length != Constantes.MAX_DATOS_PERSONA) {
 			throw new EmsInvalidNumberOfDataException("El número de datos para PERSONA es menor de 8");
 		}
@@ -263,7 +261,6 @@ public class ContactosCovid {
 				break;
 			}
 		}
->>>>>>> 51745338ec1e6052d3bb9a6c99a24580f282d286
 		return persona;
 	}
 
