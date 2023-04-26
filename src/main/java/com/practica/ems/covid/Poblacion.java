@@ -5,7 +5,9 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 import com.practica.excecption.EmsDuplicatePersonException;
+import com.practica.excecption.EmsInvalidNumberOfDataException;
 import com.practica.excecption.EmsPersonNotFoundException;
+import com.practica.genericas.Constantes;
 import com.practica.genericas.FechaHora;
 import com.practica.genericas.Persona;
 
@@ -26,6 +28,7 @@ public class Poblacion {
 	}
 
 	public void addPersona (Persona persona) throws EmsDuplicatePersonException {
+
 		try {
 			findPersona(persona.getDocumento());
 			throw new EmsDuplicatePersonException();
