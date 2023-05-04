@@ -43,25 +43,7 @@ public class ListaContactos {
 	}
 
 	private void introducirNodoNuevo(NodoTemporal nuevo, PosicionPersona p, NodoTemporal aux, NodoTemporal ant) {
-		NodoPosicion npActual = nuevo.getListaCoordenadas();
-		NodoPosicion npAnt=null;
-		boolean npEncontrado = false;
-		while (npActual!=null && !npEncontrado) {
-			if(npActual.getCoordenada().equals(p.getCoordenada())) {
-				npEncontrado=true;
-				npActual.setNumPersonas(npActual.getNumPersonas()+1);
-			}else {
-				npAnt = npActual;
-				npActual = npActual.getSiguiente();
-			}
-		}
-		if(!npEncontrado) {
-			NodoPosicion npNuevo = new NodoPosicion(p.getCoordenada(),  1, null);
-			if(nuevo.getListaCoordenadas()==null)
-				nuevo.setListaCoordenadas(npNuevo);
-			else
-				npAnt.setSiguiente(npNuevo);
-		}
+		insertarEnLista(p, nuevo);
 		if(ant !=null) {
 			nuevo.setSiguiente(aux);
 			ant.setSiguiente(nuevo);
