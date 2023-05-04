@@ -231,7 +231,7 @@ public class ContactosCovid {
 				persona.setEmail(data[4]);
 				persona.setDireccion(data[5]);
 				persona.setCp(data[6]);
-				persona.setFechaNacimiento(parsearFecha(data[7]));
+				persona.setFechaNacimiento(FechaHora.parsearFecha(data[7]));
 		if (data.length != Constantes.MAX_DATOS_PERSONA) {
 			throw new EmsInvalidNumberOfDataException("El número de datos para PERSONA es menor de 8");
 		}
@@ -248,34 +248,11 @@ public class ContactosCovid {
 				posicionPersona.setDocumento(data[1]);
 				fecha = data[2];
 				hora = data[3];
-				posicionPersona.setFechaPosicion(parsearFecha(fecha, hora));
+				posicionPersona.setFechaPosicion(FechaHora.parsearFecha(fecha, hora));
 				latitud = Float.parseFloat(data[4]);
 				longitud = Float.parseFloat(data[5]);
 				posicionPersona.setCoordenada(new Coordenada(latitud, longitud));
 		return posicionPersona;
 	}
-	
-	private FechaHora parsearFecha (String fecha) {
-		int dia, mes, anio;
-		String[] valores = fecha.split("\\/");
-		dia = Integer.parseInt(valores[0]);
-		mes = Integer.parseInt(valores[1]);
-		anio = Integer.parseInt(valores[2]);
-		FechaHora fechaHora = new FechaHora(dia, mes, anio, 0, 0);
-		return fechaHora;
-	}
-	
-	private FechaHora parsearFecha (String fecha, String hora) {
-		int dia, mes, anio;
-		String[] valores = fecha.split("\\/");
-		dia = Integer.parseInt(valores[0]);
-		mes = Integer.parseInt(valores[1]);
-		anio = Integer.parseInt(valores[2]);
-		int minuto, segundo;
-		valores = hora.split("\\:");
-		minuto = Integer.parseInt(valores[0]);
-		segundo = Integer.parseInt(valores[1]);
-		FechaHora fechaHora = new FechaHora(dia, mes, anio, minuto, segundo);
-		return fechaHora;
-	}
+
 }
